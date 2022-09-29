@@ -5,6 +5,7 @@ name: Output
 on:
   workflow_dispatch:
   repository_dispatch:    
+    types: [on-demand-test]
 
 jobs:
 #Taking A Output "Hello" form a step and Storing it in OUTPUTS
