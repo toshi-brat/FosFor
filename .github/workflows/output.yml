@@ -35,5 +35,5 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
         source: 'deploy.tar'
-        target: '/var/www/html'
+        target: '/home/ubuntu/'
 
