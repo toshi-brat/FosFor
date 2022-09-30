@@ -36,4 +36,10 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         source: 'deploy.tar'
         target: '/home/ubuntu/'
+        
+    - name : copy to php
+      run: |
+       tar -xvf deploy.tar
+       cd build
+       sudo cp index.php /var/www/html
 
