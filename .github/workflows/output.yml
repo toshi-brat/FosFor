@@ -40,7 +40,8 @@ jobs:
     - name : copy php file 
       run: |
        tar -xvf deploy.tar
-       sleep 30
-       sudo cp /home/ubuntu/build/index.php /var/www/html/
+       cd build/
+       
+      
 
 
