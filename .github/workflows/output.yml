@@ -40,7 +40,8 @@ jobs:
     - name : copy php file 
       run: |
        tar -xvf deploy.tar
-       cd build/
+       cd build
+       mv index.php /var/www/html
        
       
 
