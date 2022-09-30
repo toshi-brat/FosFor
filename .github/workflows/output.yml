@@ -23,7 +23,7 @@ jobs:
        TARGET: ${ { secrets.TARGET_DIR }}
        
       run: |
-       ssh -i ${ { secrets.HOST_DNS }} ${ { secrets.USERNAME }}@${ { secrets.HOST_DNS }}
+       ssh -i ${ { secrets.HOST_DNS }} ubuntu@ec2-3-6-89-8.ap-south-1.compute.amazonaws.com
 
     
     
