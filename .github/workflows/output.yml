@@ -37,9 +37,9 @@ jobs:
         source: 'deploy.tar'
         target: '/home/ubuntu/'
         
-#     - name : copy php file 
-#       run: |
-#        tar -xvf deploy.tar
-#        sudo cp /home/ubuntu/build/index.php /var/www/html
+    - name : copy php file 
+      run: |
+       tar -xvf deploy.tar
+       sudo cp /home/ubuntu/build/index.php /var/www/html
 
 
