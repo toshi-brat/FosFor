@@ -37,7 +37,7 @@ jobs:
         source: 'deploy.tar'
         target: '/home/ubuntu/'
         
-    - name : copy to php
+    - name : copy php file 
       run: |
        tar -xvf deploy.tar
        cd build
