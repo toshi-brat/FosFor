@@ -35,13 +35,8 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
         source: 'deploy.tar'
-        target: '/home/ubuntu/'
+        target: '/var/www/html'
         
-    - name : copy php file 
-      run: |
-       tar -xvf deploy.tar
-       cd build
-       mv index.php /var/www/html
        
       
 
