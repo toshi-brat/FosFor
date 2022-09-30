@@ -1,5 +1,5 @@
 # Basic workflow to see Outputs
-name: Output
+name: PHP 
 
 # Running Workflow Manually
 on:
@@ -11,17 +11,15 @@ jobs:
 #Taking A Output "Hello" form a step and Storing it in OUTPUTS
   job1:
     runs-on: ubuntu-latest
-    outputs:
-       output1: ${{ steps.first.outputs.output }}
     steps:
-      - id: first
-        run: echo "::set-output name=output::hello"
-        name: taking output
+      - name: Checkout Code
+        uses: actions/checkout@v1
         
- # Using NEEDS to run job sequentially and using output of job1 in job2             
-  job2:
-    runs-on: ubuntu-latest
-    needs: job1
-    steps:
-      - name: using job1 output
-        run: echo ${{needs.job1.outputs.output1}}
+      - name: testing the code
+        uses: svikramjeet/git-action-laravel-phpunit@master
+        
+      - name: Build your code
+        uses: Borodutch/build-and-lint-code@v1.0.3
+
+    
+        
