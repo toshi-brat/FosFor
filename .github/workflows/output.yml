@@ -14,14 +14,23 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    - name: Deploy to Server 1
+      uses: easingthemes/ssh-deploy@main
+      env:
+       SSH_PRIVATE_KEY: ${ { secrets.EC2_SSH_KEY }}
+       REMOTE_HOST: ${ { secrets.HOST_DNS }}
+       REMOTE_USER: ${ { secrets.USERNAME }}
+       TARGET: ${ { secrets.TARGET_DIR }}
+
     
-    - name: copy file via ssh key
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        port: ${{ secrets.PORT }}
-        source: "index.php"
-        target: /var/www/html
+    
+#     - name: copy file via ssh key
+#       uses: appleboy/scp-action@master
+#       with:
+#         host: ${{ secrets.HOST }}
+#         username: ${{ secrets.USERNAME }}
+#         key: ${{ secrets.KEY }}
+#         port: ${{ secrets.PORT }}
+#         source: "index.php"
+#         target: /var/www/html
 
