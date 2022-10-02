@@ -14,33 +14,23 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-#     - name: Deploy to Server 1
-# #       uses: easingthemes/ssh-deploy@main
-#       env:
-#        SSH_PRIVATE_KEY: ${ { secrets.EC2_SSH_KEY }}
-# #        REMOTE_HOST: ${ { secrets.HOST_DNS }}
-# #        REMOTE_USER: ${ { secrets.USERNAME }}
-# #        TARGET: ${ { secrets.TARGET_DIR }}
-       
-#     - name: Run a multi-line script
-#       run: |
-#          mkdir ../build
-#          cp -TR . ../build
-#          tar -cvf deploy.tar ../build/
-    
-#     - name: copy file via ssh key
-#       uses: appleboy/scp-action@master
-#       with:
-#         host: ${{ secrets.HOST_DNS }}
-#         username: ${{ secrets.USERNAME }}
-#         key: ${{ secrets.EC2_SSH_KEY }}
-#         source: 'deploy.tar'
-#         target: '/var/www/html'
-        
-    - name: ssh
+    - name: Run a multi-line script
       run: |
-       ssh -i ${{ secrets.ECC2_SSH_KEY}} ubuntu@3.6.89.8
-       cd builds/
+         mkdir ../build
+         cp -TR . ../build
+         tar -cvf deploy.tar ../build/
+    
+    - name: copy file via ssh key
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST_DNS }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        source: 'deploy.tar'
+        target: '/var/www/html'
+        script: sudo cp /home/ubuntu/build/index.php /var/www/html
+        
+  
       
         
        
