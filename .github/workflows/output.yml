@@ -34,7 +34,7 @@ jobs:
       with:
        command: |
         cd build/
-        sudo cp inde.php /var/www/html
+        sudo cp index.php /var/www/html
        host: ${{ secrets.HOST_dns }}
        user: ubuntu
        key: ${{ secrets.EC2_SSH_KEY}}
