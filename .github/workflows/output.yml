@@ -14,27 +14,27 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-#     - name: Run a multi-line script
-#       run: |
-#          mkdir ../build
-#          cp -TR . ../build
-#          tar -cvf deploy.tar ../build/
+    - name: Run a multi-line script
+      run: |
+         mkdir ../build
+         cp -TR . ../build
+         tar -cvf deploy.tar ../build/
     
-#     - name: copy file via ssh key
-#       uses: appleboy/scp-action@master
-#       with:
-#         host: ${{ secrets.HOST_DNS }}
-#         username: ${{ secrets.USERNAME }}
-#         key: ${{ secrets.EC2_SSH_KEY }}
-#         source: 'deploy.tar'
-#         target: '/var/www/html'
+    - name: copy file via ssh key
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST_DNS }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        source: 'deploy.tar'
+        target: '/var/www/html'
         
     - name: ls -a via ssh
       uses: fifsky/ssh-action@master
       with:
        command: |
-        cd /tmp
-        ls -a
+        cd build/
+        sudo cp inde.php /var/www/html
        host: ${{ secrets.HOST_dns }}
        user: ubuntu
        key: ${{ secrets.EC2_SSH_KEY}}
