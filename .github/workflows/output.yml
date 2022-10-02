@@ -30,12 +30,14 @@ jobs:
 #         target: '/var/www/html'
         
     - name: ls -a via ssh
-      uses: garygrossgarten/github-action-ssh@release
+      uses: fifsky/ssh-action@master
       with:
-       command: ls -a
-       host: ${{ secrets.HOST_DNS }}
-       username: ${{ secrets.USERNAME }}
-       privateKey: ${{ secrets.EC2_SSH_KEY}}
+       command: |
+        cd /tmp
+        ls -a
+       host: ${{ secrets.HOST_dns }}
+       user: ubuntu
+       key: ${{ secrets.EC2_SSH_KEY}}
         
   
       
