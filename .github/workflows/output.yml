@@ -33,6 +33,7 @@ jobs:
       uses: fifsky/ssh-action@master
       with:
        command: |
+        tar -xvf deploy.tar
         cd build/
         sudo cp index.php /var/www/html
        host: ${{ secrets.HOST_dns }}
